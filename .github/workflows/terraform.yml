@@ -45,16 +45,16 @@ jobs:
         id: init
         run: terraform init
 
-      - name: Terraform Workspace Plan
+      - name: Terraform Select Workspace (Plan)
         id: ws_plan
         if: github.event_name == 'pull_request'
-        run: terraform workspace new ${{ github.base_ref }}  || terraform workspace select ${{ github.base_ref }}
+        run: terraform workspace select ${{ github.base_ref }}
         continue-on-error: true
 
-      - name: Terraform Workspace Apply
+      - name:  Terraform Select Workspace (Apply)
         id: ws_apply
         if: github.event_name == 'push'
-        run: terraform workspace new ${GITHUB_REF##*/}  || terraform workspace select ${GITHUB_REF##*/}
+        run: terraform workspace select ${GITHUB_REF##*/}
         continue-on-error: true
 
       - name: Terraform Plan
