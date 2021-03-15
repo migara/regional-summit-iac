@@ -1,8 +1,3 @@
-locals {
-  config = yamldecode(file("./env/${terraform.workspace}/config.yml"))
-}
-
-
 resource "aws_vpc" "shared" {
   cidr_block = "172.16.0.0/16"
   tags       = { 
@@ -10,6 +5,10 @@ resource "aws_vpc" "shared" {
     Event = "Regional Summit 2021"
   }
 }
+
+# locals {
+#   config = yamldecode(file("./env/${terraform.workspace}/config.yml"))
+# }
 
 # resource "aws_vpc" "this" {
 #   cidr_block = local.config.cidr_block
