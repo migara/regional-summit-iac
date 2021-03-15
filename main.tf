@@ -1,10 +1,10 @@
-resource "aws_vpc" "shared" {
-  cidr_block = "172.16.0.0/16"
-  tags       = { 
-    Name = "${terraform.workspace} Shared VPC"
-    Event = "Regional Summit 2021"
-  }
-}
+# resource "aws_vpc" "shared" {
+#   cidr_block = "172.16.0.0/16"
+#   tags       = { 
+#     Name = "${terraform.workspace} Shared VPC"
+#     Event = "Regional Summit 2021"
+#   }
+# }
 
 # locals {
 #   config = yamldecode(file("./env/${terraform.workspace}/config.yml"))
