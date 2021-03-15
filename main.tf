@@ -3,6 +3,6 @@ locals {
 }
 
 resource "aws_vpc" "this" {
-  cidr_block = config.cidr_block
-  tags       = merge(var.tags, config.tags)
+  cidr_block = local.config.cidr_block
+  tags       = merge(var.tags, local.config.tags)
 }
