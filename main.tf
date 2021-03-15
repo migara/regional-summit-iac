@@ -5,7 +5,7 @@ locals {
 
 resource "aws_vpc" "shared" {
   cidr_block = "172.16.0.0/16"
-  tags       = { Name = "${lterraform.workspace} Shared VPC"})
+  tags       = { Name = "${terraform.workspace} Shared VPC"}
 }
 
 # resource "aws_vpc" "this" {
