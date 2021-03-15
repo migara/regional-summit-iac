@@ -1,25 +1,16 @@
-terraform {
-  required_providers {
-    random = {
-      source  = "hashicorp/random"
-      version = "3.0.1"
-    }
-    aws = {
-      source  = "hashicorp/aws"
-      version = "3.30.0"
-    }
-  }
-
-  backend "s3" {
-    bucket = "regional-training-2021-gh-actions"
-    key    = "gh-actions-demo"
+resource "aws_vpc" "shared" {
+  cidr_block = "172.16.0.0/16"
+  tags       = { 
+    Name = "${terraform.workspace} Shared VPC"
+    Event = "Regional Summit 2021"
   }
 }
 
-resource "random_pet" "foo" {}
+# locals {
+#   config = yamldecode(file("./env/${terraform.workspace}/config.yml"))
+# }
 
-output "foo" {
-  value = random_pet.foo.id
-}
-
-provider "aws" {}
+# resource "aws_vpc" "this" {
+#   cidr_block = local.config.cidr_block
+#   tags       = merge(var.tags, local.config.tags, { Name = "${local.config.prefix} VPC"})
+# }
